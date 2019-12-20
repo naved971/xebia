@@ -6,7 +6,7 @@ import NoMatch from '../components/NoMatch';
 
 const PrivateRoute = ({
     component: Component,
-    ...rest,
+    ...rest
 }) => (
         <Route {...rest} render={
             props => (
