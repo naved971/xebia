@@ -4,7 +4,7 @@ import './style.css';
 import * as d3 from "d3";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const SolorSystem = ({ planets, onSelectPlanet }) => {
+const SolorSystem = ({ planets=[], onSelectPlanet }) => {
     React.useEffect(() => {
         function processPlanets() {
             var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -222,6 +222,11 @@ const SolorSystem = ({ planets, onSelectPlanet }) => {
         window.addEventListener("resize", drawPlanets);
         if (planets.length > 0) {
             refresh();
+        }
+        return ()=>{
+            cleanTimers();
+            window.removeEventListener("resize", drawPlanets);
+
         }
     }, [planets])
 
